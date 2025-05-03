@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #FFBB25; /* Yellow from schema */
+  --secondary: #FAF3E6; /* Light cream from schema */
+  --accent: #1C1C1C; /* Dark navy/gray from schema */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FAF3E6;
+}
+
+@layer components {
+  .hive-card {
+    @apply bg-white p-6 rounded-xl border shadow-sm hover:shadow-md transition-all duration-200;
+  }
+  
+  .hive-input {
+    @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm 
+      file:border-0 file:bg-transparent file:text-sm file:font-medium 
+      placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 
+      focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .agent-indicator {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium;
+  }
+  
+  /* Honeycomb effect for cards */
+  .honeycomb {
+    @apply relative rounded-xl border before:absolute before:inset-0 before:rounded-xl 
+      before:border-2 before:border-primary/30 before:content-[''] before:-m-[2px];
+  }
+  
+  /* Pulse animation for agent active status */
+  .pulse {
+    @apply relative inline-flex h-3 w-3 rounded-full bg-green-500;
+  }
+  
+  .pulse::before {
+    @apply absolute -inset-1 rounded-full border-2 border-green-500/50 animate-pulse content-[''];
+  }
+  
+  /* Agent status indicators */
+  .status-active {
+    @apply bg-green-500;
+  }
+  
+  .status-idle {
+    @apply bg-amber-500;
+  }
+  
+  .status-error {
+    @apply bg-red-500;
+  }
+  
+  /* Button styling based on schema */
+  .btn-primary {
+    @apply bg-primary text-accent hover:bg-primary/90 font-medium;
+  }
+  
+  /* Header styling */
+  .header-1 {
+    @apply text-3xl font-bold text-accent;
+  }
+  
+  .header-2 {
+    @apply text-2xl font-semibold text-accent;
+  }
+  
+  .body-text {
+    @apply text-accent/90;
+  }
+}
